@@ -1,0 +1,25 @@
+{
+    "name": "mikoweb/rest-orm-extended",
+    "type": "library",
+    "description": "Extended version of tystr/rest-orm package.",
+    "keywords": [
+        "rest",
+        "orm",
+        "api"
+    ],
+    "homepage": "https://github.com/mikoweb/rest-orm-extended",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafał Mikołajun",
+            "email": "rafal@mikoweb.pl"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Mikoweb\\RestOrm\\" : "src/" }
+    },
+    "require": {
+        "php": ">=5.6.4",
+        "tystr/rest-orm": "~0.5.5"
+    }
+}
