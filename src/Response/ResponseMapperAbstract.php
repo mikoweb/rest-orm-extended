@@ -6,6 +6,7 @@ use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 use Nocarrier\Hal;
+use Psr\Http\Message\ResponseInterface;
 use Tystr\RestOrm\Metadata\Registry;
 use Tystr\RestOrm\Response\HalResponseMapper;
 
