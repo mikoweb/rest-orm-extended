@@ -5,6 +5,7 @@ namespace Mikoweb\RestOrm\Response;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
+use Nocarrier\Hal;
 use Tystr\RestOrm\Metadata\Registry;
 use Tystr\RestOrm\Response\HalResponseMapper;
 
@@ -44,4 +45,25 @@ abstract class ResponseMapperAbstract extends HalResponseMapper
      * @return SerializerBuilder
      */
     abstract protected function configureSerializer(SerializerBuilder $serializer);
+
+    /**
+     * Maps a response body to an Hal object.
+     *
+     * @param ResponseInterface $response
+     * @param string            $format
+     *
+     * @return Hal
+     */
+    protected function getHal(ResponseInterface $response, $format)
+    {
+        if ('json' === $format) {
+            $hal = Hal::fromJson((string) $response->getBody(), 10);
+        } elseif ('xml' === $format) {
+            $hal = Hal::fromXml((string) $response->getBody(), 10);
+        } else {
+            throw new InvalidArgumentException(sprintf('Unsupported format "%s".', $format));
+        }
+
+        return $hal;
+    }
 }
